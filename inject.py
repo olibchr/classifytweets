@@ -20,7 +20,7 @@ __author__ = 'oliver'
 
 
 from pumpkin import *
-import twitter, sys
+import twitter, sys, json
 filter = sys.argv[1]
 
 api = twitter.Api(consumer_key="Cwyqtxw3q9EaTwNmOo4nV5Rt3",
@@ -41,9 +41,7 @@ class inject(PmkSeed.Seed):
         inject a single data "world" to a greeter which will
         tell us "hello"
         """
-        results = api.GetSearch(term=filter, result_type="recent")
-        self.dispatch(pkt, json.dumps(results), "UNCLASSIFIED")
-
-
+        results = api.GetSearch(term=filter, result_type="recent", count=100)
+        self.dispatch(pkt, json.dumps({'tweets':results}), "UNCLASSIFIED")
 
         pass
