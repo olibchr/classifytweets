@@ -1,11 +1,4 @@
-import nltk, json
-from nltk.corpus import stopwords
-import datetime, numpy
-from flask import Flask, request, jsonify
-from dateutil import parser
-import matplotlib
-import sys
-from pumpkin import *
+__author__ = 'oliver'
 
 ###START-CONF
 ##{
@@ -30,6 +23,17 @@ from pumpkin import *
 ##
 ##          ] }
 ##END-CONF
+
+import nltk, json
+from nltk.corpus import stopwords
+import datetime, numpy
+from flask import Flask, request, jsonify
+from dateutil import parser
+import matplotlib
+import sys
+from pumpkin import *
+
+
 
 classifier = nltk.data.load("classifiers/movie_reviews_NaiveBayes.pickle")
 stop = set(stopwords.words('english'))

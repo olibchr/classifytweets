@@ -1,11 +1,4 @@
-import nltk, json
-from nltk.corpus import stopwords
-import datetime, numpy, time
-from flask import Flask, request, jsonify
-from dateutil import parser
-import matplotlib.pyplot as plt
-import sys
-from pumpkin import *
+__author__ = 'oliver'
 
 ###START-CONF
 ##{
@@ -17,12 +10,22 @@ from pumpkin import *
 ##                  "description": "predictions to plot",
 ##                  "required": true,
 ##                  "type": "String",
-##                  "state" : "UNCLASSIFIED"
+##                  "state" : "PREDICTED"
 ##              } ],
 ##"return": [
 ##
 ##          ] }
 ##END-CONF
+
+import nltk, json
+from nltk.corpus import stopwords
+import datetime, numpy, time
+from flask import Flask, request, jsonify
+from dateutil import parser
+import matplotlib.pyplot as plt
+import sys
+from pumpkin import *
+
 
 class Tweet():
     def __init__(self, date, prediction):
