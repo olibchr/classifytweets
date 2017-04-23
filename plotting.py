@@ -20,7 +20,6 @@ __author__ = 'oliver'
 import nltk, json
 from nltk.corpus import stopwords
 import datetime, numpy, time
-from flask import Flask, request, jsonify
 from dateutil import parser
 import matplotlib.pyplot as plt
 import sys
