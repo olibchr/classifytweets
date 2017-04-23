@@ -28,7 +28,6 @@ import nltk, json
 from nltk.corpus import stopwords
 import datetime, numpy
 from dateutil import parser
-import matplotlib
 import sys
 from pumpkin import *
 
