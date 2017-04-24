@@ -1,6 +1,4 @@
 #!/bin/bash
-sudo apt-get update
-wait
 sudo apt-get install python2.7
 wait
 sudo apt-get install python-virtualenv 
@@ -27,8 +25,6 @@ git clone https://github.com/olibchr/classifytweets
 pip install nltk
 wait
 pip install numpy
-wait
-pip install dateutil
 wait
 cd classifytweets
 mkdir ~/nltk_data
