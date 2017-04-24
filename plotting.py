@@ -25,7 +25,7 @@ import sys
 from pumpkin import *
 
 
-class Tweet():
+class TTweet():
     def __init__(self, date, text, prediction):
         self.date = parser.parse(date)
         self.text = text
@@ -52,7 +52,7 @@ class greet(PmkSeed.Seed):
         data = json.loads(predictions)
         tweets = []
         for t in data:
-            tweets.append(Tweet(t['date'], t['text'], t['prediction']))
+            tweets.append(TTweet(t['date'], t['text'], t['prediction']))
         with open('tweets_classified.json', 'wr') as outfile:
             outfile.write(json.dumps([t.serialize() for t in tweets]))
         # According to assignment specs we should do this separately but what would be the point of that..

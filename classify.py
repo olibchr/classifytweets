@@ -34,7 +34,7 @@ from pumpkin import *
 
 classifier = nltk.data.load("classifiers/movie_reviews_NaiveBayes.pickle")
 
-class Tweet():
+class TTweet():
     def __init__(self, date, text):
         self.date = parser.parse(date)
         self.text = text
@@ -61,7 +61,7 @@ class greet(PmkSeed.Seed):
         data = json.loads(tweets)
         tweets = []
         for t in data:
-            tweets.append(Tweet(t['date'], t['tweet']))
+            tweets.append(TTweet(t['date'], t['tweet']))
         for t in tweets:
             print t
             tokens = nltk.word_tokenize(t.text)
