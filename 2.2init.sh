@@ -30,8 +30,6 @@ pip install numpy
 wait
 pip install dateutil
 wait
-python -m nltk.downloader all
-wait
 cd classifytweets
 mkdir ~/nltk_data
 mkdir ~/nltk_data/classifiers
