@@ -33,5 +33,8 @@ wait
 python -m nltk.downloader all
 wait
 cd classifytweets
+mkdir ~/nltk_data
+mkdir ~/nltk_data/classifiers
+cp ./movie_reviews_NaiveBayes.pickle ~/nltk_data/classifiers/
 
 

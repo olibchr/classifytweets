@@ -18,7 +18,6 @@ __author__ = 'oliver'
 ##END-CONF
 
 import nltk, json
-from nltk.corpus import stopwords
 import datetime, numpy, time
 from dateutil import parser
 import matplotlib.pyplot as plt
@@ -27,9 +26,18 @@ from pumpkin import *
 
 
 class Tweet():
-    def __init__(self, date, prediction):
+    def __init__(self, date, text, prediction):
         self.date = parser.parse(date)
+        self.text = text
         self.prediction = prediction
+        self.serialized = {}
+    def serialize(self):
+        self.serialized = {
+            'date': self.date,
+            'text': self.text,
+            'prediction': self.prediciton
+        }
+        return self.serialized
 
 class greet(PmkSeed.Seed):
     def __init__(self, context, poi=None):
@@ -44,7 +52,10 @@ class greet(PmkSeed.Seed):
         data = json.loads(predictions)
         tweets = []
         for t in data:
-            tweets.append(Tweet(t['date'], t['prediction']))
+            tweets.append(Tweet(t['date'], t['text'], t['prediction']))
+        with open('tweets_classified.json', 'wr') as outfile:
+            outfile.write(json.dumps([t.serialize() for t in tweets]))
+        # According to assignment specs we should do this separately but what would be the point of that..
         dates = []
         predictions = []
         t = 0

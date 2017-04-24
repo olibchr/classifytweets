@@ -25,7 +25,6 @@ __author__ = 'oliver'
 ##END-CONF
 
 import nltk, json
-from nltk.corpus import stopwords
 import datetime, numpy
 from dateutil import parser
 import sys
@@ -34,7 +33,6 @@ from pumpkin import *
 
 
 classifier = nltk.data.load("classifiers/movie_reviews_NaiveBayes.pickle")
-stop = set(stopwords.words('english'))
 
 class Tweet():
     def __init__(self, date, text):
@@ -45,6 +43,7 @@ class Tweet():
     def serialize(self):
         self.serialized = {
             'date': self.date,
+            'text': self.text,
             'prediction': self.prediciton
         }
         return self.serialized
@@ -66,8 +65,7 @@ class greet(PmkSeed.Seed):
         for t in tweets:
             print t
             tokens = nltk.word_tokenize(t.text)
-            filtered_tokens = [i.lower() for i in tokens if i.lower() not in stop]
-            feats = dict([(word, True) for word in filtered_tokens])
+            feats = dict([(word, True) for word in tokens])
             t.prediction = classifier.classify(feats)
         self.dispatch(pkt, [e.serialize() for e in tweets], "GREETING")
         pass
