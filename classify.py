@@ -67,7 +67,9 @@ class greet(PmkSeed.Seed):
             tokens = nltk.word_tokenize(t.text)
             feats = dict([(word, True) for word in tokens])
             t.prediction = classifier.classify(feats)
-        self.dispatch(pkt, [e.serialize() for e in tweets], "GREETING")
+        for r in allTweets:
+            r.serialize()
+        self.dispatch(pkt, [e.serialized for e in tweets], "PREDICTED")
         pass
 
 
